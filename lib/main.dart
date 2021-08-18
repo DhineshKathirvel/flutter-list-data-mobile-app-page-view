@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_list_data/quote.dart';
+import 'quote_card.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,33 +21,6 @@ class _ListDataState extends State<ListData> {
     Quote(text: "I want to put a dent in the universe.", author: "Steve Jobs")
   ];
 
-  Widget quoteTemplate(quote){
-    return Card(
-      child:
-      Padding(
-        padding: const EdgeInsets.fromLTRB(16.0,16.0,16.0,0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(quote.text,
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontSize: 18.0
-              ),
-            ),
-            SizedBox(height: 14.0),
-            Text(quote.author,
-              style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 12.0
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,8 +31,10 @@ class _ListDataState extends State<ListData> {
         centerTitle: true,
       ),
       body: Column(
-        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
       )
     );
   }
 }
+
+
